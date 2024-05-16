@@ -8754,9 +8754,14 @@
         Time, in seconds, after which there will be no more atempts to transmit the message.
       </description>
     </field>
-    <field name="Message Data" abbrev="data" type="rawdata">
+    <field name="Type" abbrev="type" type="uint8_t" unit="Enumerated" prefix="TYPE">
+      <value id="0" abbrev="INLINEMSG" name="Inline Message"/>
+      <value id="1" abbrev="TEXT"      name="Text"/>
+      <value id="2" abbrev="RAW"       name="Raw Data"/>
+    </field>
+    <field name="Message To Send" abbrev="msg" type="message">
       <description>
-        Message to be transmitted .
+        Argument for message send. Expects DevDataBinary if 'RAW' or DevDataText if 'TEXT'.
       </description>
     </field>
   </message>
