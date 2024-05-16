@@ -8631,7 +8631,7 @@
     <field name="Information" abbrev="info" type="plaintext"/>
   </message>
 
-    <message id="517" name="SMS Transmission Request" abbrev="SmsRequest" category="Networking">
+  <message id="517" name="SMS Transmission Request" abbrev="SmsRequest" category="Networking">
     <description>
       Request SMS Text sending.
     </description>
@@ -8649,7 +8649,7 @@
     </field>
   </message>
 
-    <message id="518" name="SMS Transmission Status" abbrev="SmsStatus" category="Networking">
+  <message id="518" name="SMS Transmission Status" abbrev="SmsStatus" category="Networking">
     <description>
       Reply sent in response to a SMS sending request.
     </description>
@@ -8666,39 +8666,39 @@
   </message>
   
   <message id="519" name="VTOL State" abbrev="VtolState" category="Vehicle Supervision">
-  <description>
-    Reports VTOL current state.
-  </description>
-  <field name="State" abbrev="state" type="uint8_t" unit="Enumerated" prefix="VTOL_STATE">
-    <value id="0" name="Undefined" abbrev="UNDEFINED">
-      <description>Vehicle is not configured as VTOL.</description>
-    </value>
-    <value id="1" name="Transition to Fixed-Wing" abbrev="TRANSITION_TO_FW">
-      <description>Vehicle is in transition from multicopter to fixed-wing.</description>
-    </value>
-    <value id="2" name="Transition to MultiCopter" abbrev="TRANSITION_TO_MC">
-      <description>Vehicle is in transition from fixed-wing to multicopter.</description>
-    </value>
-    <value id="3" name="MutiCopter" abbrev="MC">
-      <description>Vehicle is in multicopter state.</description>
-    </value>
-    <value id="4" name="Fixed-Wing" abbrev="FW">
-      <description>Vehicle is in fixed-wing state.</description>
-    </value>
-  </field>
+    <description>
+      Reports VTOL current state.
+    </description>
+    <field name="State" abbrev="state" type="uint8_t" unit="Enumerated" prefix="VTOL_STATE">
+      <value id="0" name="Undefined" abbrev="UNDEFINED">
+        <description>Vehicle is not configured as VTOL.</description>
+      </value>
+      <value id="1" name="Transition to Fixed-Wing" abbrev="TRANSITION_TO_FW">
+        <description>Vehicle is in transition from multicopter to fixed-wing.</description>
+      </value>
+      <value id="2" name="Transition to MultiCopter" abbrev="TRANSITION_TO_MC">
+        <description>Vehicle is in transition from fixed-wing to multicopter.</description>
+      </value>
+      <value id="3" name="MutiCopter" abbrev="MC">
+        <description>Vehicle is in multicopter state.</description>
+      </value>
+      <value id="4" name="Fixed-Wing" abbrev="FW">
+        <description>Vehicle is in fixed-wing state.</description>
+      </value>
+    </field>
   </message>
   
   <message id="520" name="Arming State" abbrev="ArmingState" category="Vehicle Supervision">
-  <description>
-    Reports if motors are currently armed or disarmed.
-  </description>
-  <field name="State" abbrev="state" type="uint8_t" unit="Enumerated" prefix="MOTORS">
-    <value id="0" name="Armed" abbrev="ARMED"/>
-    <value id="1" name="Disarmed" abbrev="DISARMED"/>
-  </field>
+    <description>
+      Reports if motors are currently armed or disarmed.
+    </description>
+    <field name="State" abbrev="state" type="uint8_t" unit="Enumerated" prefix="MOTORS">
+      <value id="0" name="Armed" abbrev="ARMED"/>
+      <value id="1" name="Disarmed" abbrev="DISARMED"/>
+    </field>
   </message>
   
-   <message id="521" name="TCP Transmission Request" abbrev="TCPRequest" category="Networking">
+  <message id="521" name="TCP Transmission Request" abbrev="TCPRequest" category="Networking">
     <description>
       Request data to be sent over a TCP connection
     </description>
@@ -8732,6 +8732,47 @@
       <value id="101" abbrev="HOST_UNKNOWN" name="Host Unknown"/>
       <value id="102" abbrev="CANT_CONNECT" name="Can't Connect"/>
       <value id="103" abbrev="ERROR" name="Error trying to send sms"/>
+    </field>
+    <field name="Information" abbrev="info" type="plaintext">
+      <description> Error description.</description>
+    </field>
+  </message>
+
+  <message id="523" name="Satellite Transmission Request" abbrev="SatelliteRequest" category="Networking">
+    <description>
+      Request data to be sent over a Satellite.
+    </description>
+    <field name="Request Identifier" abbrev="req_id" type="uint16_t">
+    </field>
+    <field name="Destination" abbrev="destination" type="plaintext">
+      <description>
+        The name of the system where to send this message.
+      </description>
+    </field>
+    <field name="Time to live" abbrev="ttl" type="uint16_t" unit="s">
+      <description>
+        Time, in seconds, after which there will be no more atempts to transmit the message.
+      </description>
+    </field>
+    <field name="Message Data" abbrev="data" type="rawdata">
+      <description>
+        Message to be transmitted .
+      </description>
+    </field>
+  </message>
+
+  <message id="524" name="Satellite Transmission Status" abbrev="SatelliteStatus" category="Networking">
+    <description>
+      Reply sent in response to a Satellite sending request.
+    </description>
+    <field name="Request Identifier" abbrev="req_id" type="uint16_t">
+    </field>
+    <field name="Status Code" abbrev="status" type="uint8_t" unit="Enumerated" prefix="TXSTATUS">
+      <value abbrev="OK" name="Successfull transmission" id="1"/>
+      <value abbrev="ERROR" name="Error while trying to transmit message" id="2"/>
+      <value abbrev="QUEUED" name="Message has been queued for transmission" id="3"/>
+      <value abbrev="TRANSMIT" name="Message is currently being transmitted" id="4"/>
+      <value abbrev="EXPIRED" name="Message's TTL has expired. Transmition cancelled." id="5"/>
     </field>
     <field name="Information" abbrev="info" type="plaintext">
       <description> Error description.</description>
