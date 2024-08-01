@@ -8759,9 +8759,19 @@
       <value id="1" abbrev="TEXT"      name="Text"/>
       <value id="2" abbrev="RAW"       name="Raw Data"/>
     </field>
-    <field name="Message To Send" abbrev="msg" type="message">
+    <field name="Message Data" abbrev="msg_data" type="message">
       <description>
         Argument for message send. Expects DevDataBinary if 'RAW' or DevDataText if 'TEXT'.
+      </description>
+    </field>
+    <field name="Text Data" abbrev="txt_data" type="plaintext">
+      <description>
+      	Data to be transmitted if selected *data_mode* is *TEXT*.
+      </description>
+    </field>
+    <field name="Raw Data" abbrev="raw_data" type="rawdata">
+      <description>
+      	Data to be transmitted if selected *data_mode* is *RAW*.
       </description>
     </field>
   </message>
